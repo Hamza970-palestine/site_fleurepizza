@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notre Menu - F'leure Pizza</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <style>
+    /* Menu Specific Styles */
+    .menu-header {
+      padding: 140px 0 80px;
+      text-align: center;
+      background: rgba(22, 163, 74, 0.05);
+      border-bottom: 1px solid var(--border-glass);
+      margin-bottom: 3rem;
+    }
+    .section-title {
+      font-size: 3rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+      color: var(--text-main);
+      font-weight: 900;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 6px;
+      background: var(--accent-primary);
+      border-radius: 3px;
+    }
+    
+    .menu-category {
+      margin-bottom: 6rem;
+    }
+
+    .pizza-prices {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+      background: var(--bg-card);
+      padding: 2rem;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-glass);
+      box-shadow: var(--shadow-lg);
+    }
+    .price-tag {
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+    .price-tag strong {
+      display: block;
+      color: var(--text-main);
+      font-size: 1.8rem;
+      font-weight: 900;
+      font-family: var(--font-heading);
+    }
+    .price-tag span {
+      font-size: 0.95rem;
+      color: var(--accent-primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    .grid-items {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+    }
+
+    .menu-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: var(--transition);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+    }
+    .menu-item:hover {
+      background: #ffffff;
+      border-color: rgba(22, 163, 74, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px -5px rgba(22, 163, 74, 0.15);
+    }
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+      gap: 1rem;
+    }
+    .item-title {
+      font-size: 1.5rem;
+      color: var(--text-main);
+      font-weight: 800;
+    }
+    .item-price {
+      color: var(--accent-primary);
+      font-weight: 800;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      white-space: nowrap;
+      background: rgba(22, 163, 74, 0.1);
+      padding: 0.35rem 1rem;
+      border-radius: 999px;
+    }
+    .item-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <div class="container">
+      <a href="../index.html" class="brand-logo">
+        <span class="text-accent">F'leure</span> Pizza
+      </a>
+      <div class="mobile-toggle">
+        <span></span><span></span><span></span>
+      </div>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">Accueil</a>
+        <a href="menu.html" class="nav-link active">Menu Complet</a>
+        <a href="contact.html" class="nav-link">Contact & Infos</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="menu-header">
+    <div class="container">
+      <h1 class="hero-title" style="font-size: 3.5rem;">Notre Carte</h1>
+      <p class="hero-subtitle" style="margin: 0 auto;">Découvrez toutes nos spécialités, préparées avec des produits frais.</p>
+    </div>
+  </div>
+
+  <main class="container">
+    
+    <!-- PIZZAS BASE TOMATE -->
+    <section class="menu-category">
+      <h2 class="section-title">Pizzas - Base Tomate</h2>
+      <div style="width: 100%; height: 250px; border-radius: 16px; margin-bottom: 2rem; background: url('../assets/images/hero-bg.png') center/cover; box-shadow: var(--shadow-lg);"></div>
+      
+      <div class="pizza-prices">
+        <div class="price-tag"><span>Junior</span><strong>9€</strong></div>
+        <div class="price-tag"><span>Senior</span><strong>14€</strong></div>
+        <div class="price-tag"><span>Mega</span><strong>20€</strong></div>
+        <div class="price-tag"><span>Super Mega</span><strong>26€</strong></div>
+        <div class="price-tag" style="border-left: 1px solid var(--border-glass); padding-left: 1.5rem;">
+          <span>Option</span><strong>Fourrée au Fromage</strong>
+          <small style="color:var(--text-muted); display:block; font-size:0.75rem;">(+1.5€ à +4€ selon taille)</small>
+        </div>
+      </div>
+
+      <div class="grid-items">
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/pecheur.png" alt="Pizza Pêcheur" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">Pêcheur</h3></div>
+          <p class="item-desc">Tomate, fromage, thon, œuf.</p>
+        </div>
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/quatre_fromages.png" alt="Pizza Quatre Fromages" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">Quatre Fromages</h3></div>
+          <p class="item-desc">Tomate, 4 fromages différents.</p>
+        </div>
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/reine.png" alt="Pizza Reine" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">Reine</h3></div>
+          <p class="item-desc">Tomate, fromage, champignons, jambon.</p>
+        </div>
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/calzone.png" alt="Pizza Calzone soufflée" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">Calzone soufflée</h3></div>
+          <p class="item-desc">Tomate, fromage, jambon, œuf.</p>
+        </div>
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/paysane.png" alt="Pizza Paysane" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">Paysane</h3></div>
+          <p class="item-desc">Tomate, fromage, lardons, oignons, crème fraîche.</p>
+        </div>
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/napolitaine.png" alt="Pizza Napolitaine" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">Napolitaine</h3></div>
+          <p class="item-desc">Tomate, fromage, câpres, anchois, olive.</p>
+        </div>
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/fruit_de_la_mer.png" alt="Pizza Fruit de la mer" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">Fruit de la mer</h3></div>
+          <p class="item-desc">Tomate, fromage, fruits de mer assaisonnés.</p>
+        </div>
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/orientale.png" alt="Pizza L'orientale" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">L'orientale</h3></div>
+          <p class="item-desc">Tomate, fromage, poivrons, merguez, œuf.</p>
+        </div>
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/vegetarienne.png" alt="Pizza Végétarienne" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">Végétarienne</h3></div>
+          <p class="item-desc">Tomate, fromage, tomate fraîche, poivron, oignon, œuf.</p>
+        </div>
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/chef.png" alt="Pizza Chef" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">Chef</h3></div>
+          <p class="item-desc">Tomate, fromage, poivrons, chorizo, pomme de terre, œuf.</p>
+        </div>
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/bolognaise.png" alt="Pizza Bolognaise" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">Bolognaise</h3></div>
+          <p class="item-desc">Tomate, fromage, viande hachée, oignons, œuf.</p>
+        </div>
+        <div class="menu-item">
+          <img src="../assets/images/pizzas/mexicaine.png" alt="Pizza Mexicaine" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header"><h3 class="item-title">Mexicaine</h3></div>
+          <p class="item-desc">Tomate, fromage, pepperoni, merguez, poivron, olive.</p>
+        </div>
+        <!-- Special Price Pizzas -->
+        <div class="menu-item" style="border-color: var(--accent-green);">
+          <img src="../assets/images/pizzas/scandinave.png" alt="Pizza Scandinave" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
+          <div class="item-header">
+            <h3 class="item-title">Scandinave</h3>
+            <span class="item-price">Dès 10.50€</span>
+          </div>
+          <p class="item-desc">Tomate, fromage, crème fraîche, saumon. <br><small>10.50€ / 16.00€ / 22.50€ / 29.00€</small></p>
+        </div>
+        <div class="menu-item" style="border-color: var(--accent-green);">
+          <div class="item-header">
+            <h3 class="item-title">Margarita</h3>
+            <span class="item-price">Dès 7.00€</span>
+          </div>
+          <p class="item-desc">Tomate, fromage, origan. <br><small>7.00€ / 10.00€ / 13.00€ / 19.00€</small></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PIZZAS BASE CREME -->
+    <section class="menu-category">
+      <h2 class="section-title">Pizzas - Base Crème</h2>
+      <div class="grid-items">
+        <div class="menu-item">
+          <div class="item-header"><h3 class="item-title">Fermière</h3></div>
+          <p class="item-desc">Crème fraîche, fromage, poulet, pomme de terre, fromage à raclette.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header"><h3 class="item-title">Hawaïenne</h3></div>
+          <p class="item-desc">Crème fraîche, fromage, jambon, ananas.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header"><h3 class="item-title">Milano</h3></div>
+          <p class="item-desc">Crème fraîche, poulet, viande hachée, chorizo, lardons, œuf.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header"><h3 class="item-title">Dolce Vita</h3></div>
+          <p class="item-desc">Crème fraîche, viande hachée, jambon, pomme de terre, fromage à raclette.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header"><h3 class="item-title">Sudiste</h3></div>
+          <p class="item-desc">Crème fraîche, fromage, courgette, chèvre, miel.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header"><h3 class="item-title">César</h3></div>
+          <p class="item-desc">Crème fraîche, fromage, lardons, viande hachée, poivrons, chèvre, fomage à raclette.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header"><h3 class="item-title">ch'ti</h3></div>
+          <p class="item-desc">Crème fraîche, fromage, bacon, pomme de terre, Maroilles.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header"><h3 class="item-title">Boursin</h3></div>
+          <p class="item-desc">Crème fraîche, fromage, viande hachée, poulet, pomme de terre, Boursin.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header"><h3 class="item-title">Indienne</h3></div>
+          <p class="item-desc">Crème fraîche, fromage, viande hachée, merguez, cheddar, curry.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header"><h3 class="item-title">Burger</h3></div>
+          <p class="item-desc">Crème fraîche, fromage, oignon, viande hachée, frites, sauce burger.</p>
+        </div>
+        <div class="menu-item">
+          <div class="item-header"><h3 class="item-title">Tartiflette</h3></div>
+          <p class="item-desc">Crème fraîche, fromage, oignons, lardons, fromage à raclette.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BURGERS, PANINIS, TACOS & PANIZZA -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 3rem;">
+      
+      <!-- Paninis -->
+      <section class="menu-category">
+        <h2 class="section-title">Nos Paninis <span style="font-size: 1.5rem; color: var(--accent-red);">5€</span></h2>
+        <div style="width: 100%; height: 200px; border-radius: 16px; margin-bottom: 2rem; background: url('../assets/images/panini-cat.png') center/cover; box-shadow: var(--shadow-lg);"></div>
+        <div class="grid-items" style="grid-template-columns: 1fr;">
+          <div class="menu-item">
+            <h3 class="item-title">Au Choix :</h3>
+            <ul style="color: var(--text-muted); padding-left: 1.5rem; margin-top: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem;">
+              <li><strong>4 fromages</strong> : 4 fromages différents.</li>
+              <li><strong>Orientale</strong> : Fromage, merguez, viande hachée.</li>
+              <li><strong>Thon</strong> : Fromages, thon.</li>
+              <li><strong>Saumon</strong> : Fromage, saumon.</li>
+              <li><strong>Poulet</strong> : Fromage, crème fraîche, poulet.</li>
+              <li><strong>Raclette</strong> : Fromage, jambon, pomme de terre, raclette</li>
+            </ul>
+            <p style="margin-top:1rem; color:var(--text-main);">+ 1 Coca offert !</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Burgers -->
+      <section class="menu-category">
+        <h2 class="section-title">Nos Burgers</h2>
+        <div style="width: 100%; height: 200px; border-radius: 16px; margin-bottom: 2rem; background: url('../assets/images/burger-cat.png') center/cover; box-shadow: var(--shadow-lg);"></div>
+        <div class="grid-items" style="grid-template-columns: 1fr;">
+          <div class="menu-item">
+            <div class="item-header"><h3 class="item-title">Menu Burger</h3><span class="item-price">6.50€</span></div>
+            <p class="item-desc">+ 1 Frite + 1 Boisson 33CL</p>
+          </div>
+          <div class="menu-item">
+            <div class="item-header"><h3 class="item-title">Maxi Burger</h3><span class="item-price">7.80€</span></div>
+            <p class="item-desc">+ 1 Frite + 1 Boisson 33CL</p>
+          </div>
+          <div class="menu-item">
+            <div class="item-header"><h3 class="item-title">Menu 180</h3><span class="item-price">8.80€</span></div>
+            <p class="item-desc">+ 1 Frite + 1 Boisson 33CL</p>
+          </div>
+          <p style="color:var(--text-muted); font-size:0.85rem; padding: 0 1rem;">Seul: Cheese Burger 5.00€ / Double Burger 6.50€ / Burger 180 7.50€</p>
+        </div>
+      </section>
+
+      <!-- Tacos -->
+      <section class="menu-category">
+        <h2 class="section-title">Nos Tacos</h2>
+        <div style="width: 100%; height: 200px; border-radius: 16px; margin-bottom: 2rem; background: url('../assets/images/tacos-cat.png') center/cover; box-shadow: var(--shadow-lg);"></div>
+        <div class="grid-items" style="grid-template-columns: 1fr;">
+          <div class="menu-item">
+            <div class="item-header"><h3 class="item-title">Taille L</h3><span class="item-price">8.00€</span></div>
+            <div class="item-header"><h3 class="item-title">Taille XL</h3><span class="item-price">10.00€</span></div>
+            <p class="item-desc" style="margin-top:1rem; color:var(--text-main);">Au choix : Poulet, Kebab, ou Viande Hachée. (Sauce fromagère mozzarella)</p>
+            <p class="item-desc" style="margin-top:0.5rem;"><span class="text-accent">+ Supplément 1€ :</span> Poulet, Tenders, Merguez, Lardon, Oeuf, Viande Hachée, Champignon, Jambon, Chèvre, Pepperoni.</p>
+            <p style="font-size:0.8rem; margin-top:0.5rem; color:var(--text-muted);">*Tous nos Tacos sont garnis de frites et sauce fromagère.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Panizza -->
+      <section class="menu-category">
+        <h2 class="section-title">Panizza</h2>
+        <div class="grid-items" style="grid-template-columns: 1fr;">
+          <div class="menu-item">
+            <div class="item-header"><h3 class="item-title">Taille L</h3><span class="item-price">8.00€</span></div>
+            <div class="item-header"><h3 class="item-title">Taille XL</h3><span class="item-price">10.00€</span></div>
+            <ul style="color: var(--text-muted); padding-left: 1.5rem; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+              <li><strong>Poulet</strong> : Mozzarella, Poulet</li>
+              <li><strong>Kebab</strong> : Mozzarella, Kebab</li>
+              <li><strong>Raclette</strong> : Mozzarella, Jambon, Pomme de terre</li>
+              <li><strong>Orientale</strong> : Mozzarella, Merguez, Viande Hachée</li>
+            </ul>
+            <p style="margin-top:1rem; color:var(--text-main); font-size:0.9rem;">Base crème ou base tomate au choix. + Supplément 1€.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="border-top: 1px solid var(--border-glass); padding: 3rem 0; margin-top: 4rem; text-align: center;">
+    <div class="container">
+      <h2 style="font-size: 2rem; margin-bottom: 1rem;"><span class="text-accent">F'leure</span> Pizza</h2>
+      <p style="color: var(--text-muted); margin-bottom: 0.5rem;">4 ROUTE DE PARIS, ECOUIS</p>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Ouvert Le Midi de 11h00 à 14h30 (sauf le dimanche MATIN). <br>Le soir de 18h00 à 22h30. Les vendredi, Samedi et Dimanche, jusqu'à 23h.</p>
+      <a href="tel:0232510355" class="btn btn-outline">Nous appeler : 02.32.51.03.55</a>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
