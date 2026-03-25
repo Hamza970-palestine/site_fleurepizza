@@ -12,20 +12,20 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #0f0e0c;
+      background: #141f18;
       color: #f0ede6;
       overflow-x: hidden;
     }
 
     /* ─── NAVBAR OVERRIDE ─── */
     .navbar {
-      background: rgba(15,14,12,0.7) !important;
+      background: rgba(20,31,24,0.75) !important;
       border-bottom: 1px solid rgba(255,255,255,0.08) !important;
       backdrop-filter: blur(20px) !important;
     }
     .navbar .brand-logo { color: #f0ede6 !important; }
     .nav-link { color: rgba(240,237,230,0.65) !important; }
-    .nav-link:hover, .nav-link.active { color: #d4af37 !important; }
+    .nav-link:hover, .nav-link.active { color: #4caf7d !important; }
     .mobile-toggle span { background: #f0ede6 !important; }
 
     /* ─── HERO ─── */
@@ -52,9 +52,9 @@
       inset: 0;
       background: linear-gradient(
         to top,
-        rgba(15,14,12,0.97) 0%,
-        rgba(15,14,12,0.6) 40%,
-        rgba(15,14,12,0.2) 100%
+        rgba(20,31,24,0.95) 0%,
+        rgba(20,31,24,0.5) 40%,
+        rgba(20,31,24,0.1) 100%
       );
     }
     .hp-hero-content {
@@ -69,7 +69,7 @@
       font-size: 0.75rem;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: #d4af37;
+      color: #4caf7d;
       font-weight: 500;
       margin-bottom: 1.2rem;
     }
@@ -82,7 +82,7 @@
       margin-bottom: 1.5rem;
       max-width: 700px;
     }
-    .hp-hero-title em { font-style: italic; color: #d4af37; }
+    .hp-hero-title em { font-style: italic; color: #4caf7d; }
     .hp-hero-sub {
       font-size: 1.1rem;
       color: rgba(240,237,230,0.65);
@@ -108,20 +108,26 @@
       border: none;
     }
     .hp-btn-gold {
-      background: #d4af37;
-      color: #0f0e0c;
+      background: #2e7d52;
+      color: #fff;
     }
-    .hp-btn-gold:hover { background: #c8a52e; transform: translateY(-2px); }
+    .hp-btn-gold:hover { background: #256643; transform: translateY(-2px); }
     .hp-btn-ghost {
       background: transparent;
       color: #f0ede6;
       border: 1px solid rgba(240,237,230,0.35);
     }
-    .hp-btn-ghost:hover { border-color: #d4af37; color: #d4af37; transform: translateY(-2px); }
+    .hp-btn-ghost:hover { border-color: #4caf7d; color: #4caf7d; transform: translateY(-2px); }
+    .hp-btn-download {
+      background: rgba(255,255,255,0.08);
+      color: rgba(240,237,230,0.8);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .hp-btn-download:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); }
 
     /* ─── STATS BAR ─── */
     .hp-stats {
-      background: #1a1814;
+      background: #1e2e24;
       border-top: 1px solid rgba(255,255,255,0.05);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
@@ -142,7 +148,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 2.5rem;
       font-weight: 700;
-      color: #d4af37;
+      color: #4caf7d;
       display: block;
       line-height: 1;
       margin-bottom: 0.4rem;
@@ -170,7 +176,7 @@
       font-size: 0.7rem;
       letter-spacing: 4px;
       text-transform: uppercase;
-      color: #d4af37;
+      color: #4caf7d;
       margin-bottom: 0.8rem;
     }
     .hp-section-title {
@@ -191,7 +197,7 @@
       white-space: nowrap;
       transition: color 0.3s, border-color 0.3s;
     }
-    .hp-view-all:hover { color: #d4af37; border-color: #d4af37; }
+    .hp-view-all:hover { color: #4caf7d; border-color: #4caf7d; }
 
     .hp-cards-grid {
       display: grid;
@@ -235,7 +241,7 @@
       font-size: 0.65rem;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: #d4af37;
+      color: #4caf7d;
       margin-bottom: 0.4rem;
       display: block;
     }
@@ -260,11 +266,11 @@
       padding-bottom: 2px;
       transition: color 0.3s, border-color 0.3s;
     }
-    .hp-card-cta:hover { color: #d4af37; border-color: #d4af37; }
+    .hp-card-cta:hover { color: #4caf7d; border-color: #4caf7d; }
 
     /* ─── BOUTIQUE / AMBIANCE ─── */
     .hp-split {
-      background: #1a1814;
+      background: #1e2e24;
       border-top: 1px solid rgba(255,255,255,0.04);
     }
     .hp-split-inner {
@@ -325,8 +331,8 @@
       transition: border-color 0.3s, background 0.3s;
     }
     .hp-promo-card:hover {
-      border-color: #d4af37;
-      background: rgba(212,175,55,0.04);
+      border-color: #4caf7d;
+      background: rgba(76,175,125,0.06);
     }
     .hp-promo-icon { font-size: 2.5rem; display: block; margin-bottom: 1.5rem; }
     .hp-promo-title {
@@ -345,14 +351,14 @@
       display: block;
       font-size: 1rem;
       font-weight: 600;
-      color: #d4af37;
+      color: #4caf7d;
       margin-top: 1.2rem;
       letter-spacing: 0.5px;
     }
 
     /* ─── FOOTER ─── */
     .hp-footer {
-      background: #0f0e0c;
+      background: #141f18;
       border-top: 1px solid rgba(255,255,255,0.06);
       padding: 5rem 1.5rem;
       text-align: center;
@@ -363,7 +369,7 @@
       color: #f0ede6;
       margin-bottom: 0.5rem;
     }
-    .hp-footer-brand span { color: #d4af37; }
+    .hp-footer-brand span { color: #4caf7d; }
     .hp-footer-addr {
       font-size: 0.85rem;
       color: rgba(240,237,230,0.4);
@@ -389,15 +395,23 @@
       .hp-card-img-wrap { aspect-ratio: 16/9; }
       .hp-split-inner { grid-template-columns: 1fr; gap: 0; }
       .hp-split-text { padding: 5rem 0 0; }
-      .hp-split-img-grid { padding: 3rem 0 5rem; }
+      .hp-split-img-grid { padding: 3rem 0; }
       .hp-promos-grid { grid-template-columns: 1fr; }
-      .hp-section-header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      .hp-section-header { flex-direction: column; align-items: flex-start; gap: 1rem; margin-bottom: 2rem; }
+      .hp-hero-content { padding-bottom: 3rem; }
+      .hp-hero-title { font-size: 3rem; }
+      .hp-stats { padding: 3rem 1.5rem; transform: translateY(-2rem); }
+      .hp-specialites, .hp-promos, .hp-footer { padding: 4rem 1.5rem; }
     }
-    @media (max-width: 600px) {
-      .hp-hero-content { padding-bottom: 4rem; }
-      .hp-stats-inner { grid-template-columns: repeat(2, 1fr); }
-      .hp-stat { padding: 1.5rem 1rem; }
-      .hp-stat-value { font-size: 2rem; }
+
+    @media (max-width: 768px) {
+      .hp-hero { height: auto; min-height: 400px; padding-top: 100px; padding-bottom: 30px; }
+      .hp-specialites, .hp-promos, .hp-footer, .hp-split { padding: 2.5rem 1.25rem !important; }
+      .hp-stats { transform: none; margin-top: 2rem; padding: 2rem 1.25rem; }
+      .hp-section-header { margin-bottom: 1.5rem; }
+      .hp-hero-title { font-size: 2.2rem; }
+      .hp-promo-card { padding: 2rem 1.5rem; }
+      .hp-split-text { padding-top: 2rem; }
     }
   </style>
 </head>
@@ -407,7 +421,7 @@
   <header class="navbar">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
       <a href="index.html" class="brand-logo">
-        <span class="text-accent" style="color: #d4af37;">F'leure</span> Pizza
+        <span class="text-accent" style="color: #4caf7d;">F'leure</span> Pizza
       </a>
       <div class="mobile-toggle">
         <span></span><span></span><span></span>
@@ -433,6 +447,7 @@
       <div class="hp-cta-group">
         <a href="pages/pizza.html" class="hp-btn hp-btn-gold">Voir nos Pizzas</a>
         <a href="tel:0232510355" class="hp-btn hp-btn-ghost">📞 02.32.51.03.55</a>
+        <a href="assets/pdf/carte papa.pdf" class="hp-btn hp-btn-download" download>📄 Télécharger la carte</a>
       </div>
     </div>
   </section>
@@ -557,7 +572,7 @@
 
   <!-- ━━━━━ FOOTER ━━━━━ -->
   <footer class="hp-footer">
-    <h2 class="hp-footer-brand"><span>F'leure</span> Pizza</h2>
+    <h2 class="hp-footer-brand"><span style="color:#4caf7d;">F'leure</span> Pizza</h2>
     <p class="hp-footer-addr">4 Route de Paris — Écouis</p>
     <p class="hp-footer-hours">
       Midi : 11h00 – 14h30 (sauf dimanche matin)<br>
