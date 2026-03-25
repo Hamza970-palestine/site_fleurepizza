@@ -3,121 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notre Menu - F'leure Pizza</title>
+  <title>Notre Menu — F'leure Pizza</title>
   <link rel="stylesheet" href="../styles/main.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    /* Menu Specific Styles */
+    body { font-family: 'Inter', sans-serif; background: #fdfdfb; color: #1a1a1a; }
+    
+    /* Navbar Theme Sync */
+    .navbar { background: rgba(255,255,255,0.95) !important; border-bottom: 1px solid rgba(0,0,0,0.06) !important; }
+    .nav-link:hover, .nav-link.active { color: #2e7d52 !important; }
+    .brand-logo .text-accent { color: #2e7d52 !important; }
+
     .menu-header {
       padding: 140px 0 80px;
       text-align: center;
-      background: rgba(22, 163, 74, 0.05);
-      border-bottom: 1px solid var(--border-glass);
+      background: #f7f9f8;
+      border-bottom: 1px solid #e8ece9;
       margin-bottom: 3rem;
     }
+    .hero-title { font-family: 'Playfair Display', serif; font-weight: 700; color: #1e3a2a; }
     .section-title {
-      font-size: 3rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
       margin-bottom: 2.5rem;
       position: relative;
       display: inline-block;
-      color: var(--text-main);
-      font-weight: 900;
+      color: #1e3a2a;
+      font-weight: 700;
     }
     .section-title::after {
       content: '';
       position: absolute;
-      bottom: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 6px;
-      background: var(--accent-primary);
-      border-radius: 3px;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #2e7d52;
+      border-radius: 2px;
     }
     
-    .menu-category {
-      margin-bottom: 6rem;
-    }
-
+    .menu-category { margin-bottom: 6rem; }
     .pizza-prices {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 1.5rem;
       flex-wrap: wrap;
       margin-bottom: 3.5rem;
-      background: var(--bg-card);
-      padding: 2rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid var(--border-glass);
-      box-shadow: var(--shadow-lg);
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid #eee;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
     }
-    .price-tag {
-      text-align: center;
-      padding: 0 1.5rem;
-    }
+    .price-tag { text-align: center; padding: 0 1rem; border-right: 1px solid #f0f0f0; }
+    .price-tag:last-child { border-right: none; }
     .price-tag strong {
       display: block;
-      color: var(--text-main);
-      font-size: 1.8rem;
-      font-weight: 900;
-      font-family: var(--font-heading);
+      color: #1e3a2a;
+      font-size: 1.6rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
     }
     .price-tag span {
-      font-size: 0.95rem;
-      color: var(--accent-primary);
+      font-size: 0.75rem;
+      color: #2e7d52;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      font-weight: 800;
+      letter-spacing: 2px;
+      font-weight: 600;
       margin-bottom: 0.25rem;
       display: block;
     }
-
     .grid-items {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
     }
-
     .menu-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border-glass);
-      border-radius: 16px;
-      padding: 2rem;
-      transition: var(--transition);
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      border-radius: 6px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
     }
     .menu-item:hover {
-      background: #ffffff;
-      border-color: rgba(22, 163, 74, 0.3);
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px -5px rgba(22, 163, 74, 0.15);
+      border-color: #2e7d52;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(46,125,82,0.1);
     }
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 1rem;
-      gap: 1rem;
-    }
-    .item-title {
-      font-size: 1.5rem;
-      color: var(--text-main);
-      font-weight: 800;
-    }
+    .item-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem; gap: 0.5rem; }
+    .item-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #1e3a2a; font-weight: 700; }
     .item-price {
-      color: var(--accent-primary);
-      font-weight: 800;
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      white-space: nowrap;
-      background: rgba(22, 163, 74, 0.1);
-      padding: 0.35rem 1rem;
-      border-radius: 999px;
+      color: #2e7d52;
+      font-weight: 700;
+      font-size: 1.1rem;
+      background: #f0f7f3;
+      padding: 0.2rem 0.8rem;
+      border-radius: 4px;
     }
-    .item-desc {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      line-height: 1.6;
-    }
+    .item-desc { color: #666; font-size: 0.95rem; line-height: 1.6; font-weight: 400; }
+    .cat-img { width: 100%; height: 220px; object-fit: cover; border-radius: 4px; margin-bottom: 2rem; border: 1px solid #eee; }
+    .item-img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; margin-bottom: 1.2rem; }
+
   </style>
 </head>
 <body>
@@ -142,7 +128,7 @@
   <div class="menu-header">
     <div class="container">
       <h1 class="hero-title" style="font-size: 3.5rem;">Notre Carte</h1>
-      <p class="hero-subtitle" style="margin: 0 auto;">Découvrez toutes nos spécialités, préparées avec des produits frais.</p>
+      <p class="hero-subtitle" style="margin: 0 auto; color: #666;">Découvrez toutes nos spécialités, préparées avec des produits frais.</p>
     </div>
   </div>
 
@@ -150,17 +136,17 @@
     
     <!-- PIZZAS BASE TOMATE -->
     <section class="menu-category">
-      <h2 class="section-title">Pizzas - Base Tomate</h2>
-      <div style="width: 100%; height: 250px; border-radius: 16px; margin-bottom: 2rem; background: url('../assets/images/hero-bg.png') center/cover; box-shadow: var(--shadow-lg);"></div>
+      <h2 class="section-title">Pizzas Base Tomate</h2>
+      <div class="cat-img" style="background: url('../assets/images/hero-bg.png') center/cover;"></div>
       
       <div class="pizza-prices">
         <div class="price-tag"><span>Junior</span><strong>9€</strong></div>
         <div class="price-tag"><span>Senior</span><strong>14€</strong></div>
         <div class="price-tag"><span>Mega</span><strong>20€</strong></div>
         <div class="price-tag"><span>Super Mega</span><strong>26€</strong></div>
-        <div class="price-tag" style="border-left: 1px solid var(--border-glass); padding-left: 1.5rem;">
-          <span>Option</span><strong>Fourrée au Fromage</strong>
-          <small style="color:var(--text-muted); display:block; font-size:0.75rem;">(+1.5€ à +4€ selon taille)</small>
+        <div class="price-tag" style="border-left: 1px solid #eee; padding-left: 1.5rem;">
+          <span style="color:#d35400;">Option</span><strong style="font-size:1.1rem; margin-top:0.3rem;">Fourrée au Fromage</strong>
+          <small style="color:#999; display:block; font-size:0.75rem; margin-top:0.2rem;">(+1.5€ à +4€ selon taille)</small>
         </div>
       </div>
 
@@ -226,27 +212,32 @@
           <p class="item-desc">Tomate, fromage, pepperoni, merguez, poivron, olive.</p>
         </div>
         <!-- Special Price Pizzas -->
-        <div class="menu-item" style="border-color: var(--accent-green);">
-          <img src="../assets/images/pizzas/scandinave.png" alt="Pizza Scandinave" style="width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 1.5rem;">
-          <div class="item-header">
-            <h3 class="item-title">Scandinave</h3>
-            <span class="item-price">Dès 10.50€</span>
+        <div class="menu-item" style="border-bottom: 2px solid #2e7d52;">
+          <h3 class="item-title">Scandinave</h3>
+          <p class="item-desc">Tomate, fromage, crème fraîche, saumon.</p>
+          <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span class="item-price" style="font-size:0.8rem;">J 10.50€</span>
+            <span class="item-price" style="font-size:0.8rem;">S 16.00€</span>
+            <span class="item-price" style="font-size:0.8rem;">M 22.50€</span>
+            <span class="item-price" style="font-size:0.8rem;">SM 29.00€</span>
           </div>
-          <p class="item-desc">Tomate, fromage, crème fraîche, saumon. <br><small>10.50€ / 16.00€ / 22.50€ / 29.00€</small></p>
         </div>
-        <div class="menu-item" style="border-color: var(--accent-green);">
-          <div class="item-header">
-            <h3 class="item-title">Margarita</h3>
-            <span class="item-price">Dès 7.00€</span>
+        <div class="menu-item" style="border-bottom: 2px solid #2e7d52;">
+          <h3 class="item-title">Margarita</h3>
+          <p class="item-desc">Tomate, fromage, origan.</p>
+          <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <span class="item-price" style="font-size:0.8rem;">J 7.00€</span>
+            <span class="item-price" style="font-size:0.8rem;">S 10.00€</span>
+            <span class="item-price" style="font-size:0.8rem;">M 13.00€</span>
+            <span class="item-price" style="font-size:0.8rem;">SM 19.00€</span>
           </div>
-          <p class="item-desc">Tomate, fromage, origan. <br><small>7.00€ / 10.00€ / 13.00€ / 19.00€</small></p>
         </div>
       </div>
     </section>
 
     <!-- PIZZAS BASE CREME -->
     <section class="menu-category">
-      <h2 class="section-title">Pizzas - Base Crème</h2>
+      <h2 class="section-title">Pizzas Base Crème</h2>
       <div class="grid-items">
         <div class="menu-item">
           <div class="item-header"><h3 class="item-title">Fermière</h3></div>
@@ -273,7 +264,7 @@
           <p class="item-desc">Crème fraîche, fromage, lardons, viande hachée, poivrons, chèvre, fomage à raclette.</p>
         </div>
         <div class="menu-item">
-          <div class="item-header"><h3 class="item-title">ch'ti</h3></div>
+          <div class="item-header"><h3 class="item-title">Ch'ti</h3></div>
           <p class="item-desc">Crème fraîche, fromage, bacon, pomme de terre, Maroilles.</p>
         </div>
         <div class="menu-item">
@@ -300,8 +291,8 @@
       
       <!-- Paninis -->
       <section class="menu-category">
-        <h2 class="section-title">Nos Paninis <span style="font-size: 1.5rem; color: var(--accent-red);">5€</span></h2>
-        <div style="width: 100%; height: 200px; border-radius: 16px; margin-bottom: 2rem; background: url('../assets/images/panini-cat.png') center/cover; box-shadow: var(--shadow-lg);"></div>
+        <h2 class="section-title">Nos Paninis <span style="font-size: 1.2rem; color: #c0392b; opacity:0.8;">5€</span></h2>
+        <div class="cat-img" style="background: url('../assets/images/panini-cat.png') center/cover;"></div>
         <div class="grid-items" style="grid-template-columns: 1fr;">
           <div class="menu-item">
             <h3 class="item-title">Au Choix :</h3>
@@ -321,7 +312,7 @@
       <!-- Burgers -->
       <section class="menu-category">
         <h2 class="section-title">Nos Burgers</h2>
-        <div style="width: 100%; height: 200px; border-radius: 16px; margin-bottom: 2rem; background: url('../assets/images/burger-cat.png') center/cover; box-shadow: var(--shadow-lg);"></div>
+        <div class="cat-img" style="background: url('../assets/images/burger-cat.png') center/cover;"></div>
         <div class="grid-items" style="grid-template-columns: 1fr;">
           <div class="menu-item">
             <div class="item-header"><h3 class="item-title">Menu Burger</h3><span class="item-price">6.50€</span></div>
@@ -342,7 +333,7 @@
       <!-- Tacos -->
       <section class="menu-category">
         <h2 class="section-title">Nos Tacos</h2>
-        <div style="width: 100%; height: 200px; border-radius: 16px; margin-bottom: 2rem; background: url('../assets/images/tacos-cat.png') center/cover; box-shadow: var(--shadow-lg);"></div>
+        <div class="cat-img" style="background: url('../assets/images/tacos-cat.png') center/cover;"></div>
         <div class="grid-items" style="grid-template-columns: 1fr;">
           <div class="menu-item">
             <div class="item-header"><h3 class="item-title">Taille L</h3><span class="item-price">8.00€</span></div>
@@ -377,12 +368,16 @@
   </main>
 
   <!-- Footer -->
-  <footer style="border-top: 1px solid var(--border-glass); padding: 3rem 0; margin-top: 4rem; text-align: center;">
+  <footer style="border-top: 1px solid #eee; padding: 4rem 1.5rem; margin-top: 4rem; text-align: center; background:#f7f9f8;">
     <div class="container">
-      <h2 style="font-size: 2rem; margin-bottom: 1rem;"><span class="text-accent">F'leure</span> Pizza</h2>
-      <p style="color: var(--text-muted); margin-bottom: 0.5rem;">4 ROUTE DE PARIS, ECOUIS</p>
-      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Ouvert Le Midi de 11h00 à 14h30 (sauf le dimanche MATIN). <br>Le soir de 18h00 à 22h30. Les vendredi, Samedi et Dimanche, jusqu'à 23h.</p>
-      <a href="tel:0232510355" class="btn btn-outline">Nous appeler : 02.32.51.03.55</a>
+      <h2 style="font-family:'Playfair Display', serif; font-size: 2.2rem; color:#1e3a2a; margin-bottom: 1rem;"><span style="color:#2e7d52;">F'leure</span> Pizza</h2>
+      <p style="color: #666; font-size: 0.85rem; letter-spacing:2px; text-transform:uppercase; margin-bottom: 0.5rem;">4 Route de Paris — Écouis</p>
+      <p style="color: #888; font-size: 0.9rem; line-height:1.7; margin-bottom: 2rem; max-width:600px; margin-left:auto; margin-right:auto;">
+        Midi : 11h00 – 14h30 (sauf dimanche matin)<br>
+        Soir : 18h00 – 22h30<br>
+        Vendredi, Samedi & Dimanche jusqu'à 23h00
+      </p>
+      <a href="tel:0232510355" class="hp-btn hp-btn-ghost" style="border:1px solid #2e7d52; color:#2e7d52; padding:0.8rem 2rem; text-decoration:none; border-radius:4px; font-weight:600; text-transform:uppercase; font-size:0.8rem; letter-spacing:1px;">Appeler : 02.32.51.03.55</a>
     </div>
   </footer>
 

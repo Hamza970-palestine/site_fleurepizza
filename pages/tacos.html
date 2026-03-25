@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crée ton Tacos - F'leure Pizza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
+
+  <style>
+    /* ─── Tacos Builder Styles ─── */
+    .builder-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 100px auto 4rem;
+      padding: 0 1.5rem;
+    }
+    .builder-main { flex: 1; min-width: 0; }
+    .builder-header { text-align: center; margin-bottom: 3rem; }
+    .builder-header h1 { font-size: 3rem; font-family: var(--font-heading); }
+    .builder-header span { color: var(--accent-primary); }
+    
+    .step-section {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .step-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+    .step-num { 
+      background: var(--accent-primary); color: #fff; width: 40px; height: 40px; 
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+      font-weight: bold; font-size: 1.2rem;
+    }
+    .step-title { font-size: 1.5rem; }
+    
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+    .option-card {
+      background: #f8fafc; border: 2px solid transparent; border-radius: 12px;
+      padding: 1rem; text-align: center; cursor: pointer; transition: 0.2s;
+      display: flex; flex-direction: column; align-items: center; justify-content: space-between;
+    }
+    .option-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+    .option-card.selected { border-color: var(--accent-primary); background: rgba(22,163,74,0.05); }
+    .option-img { width: 80px; height: 80px; object-fit: contain; margin-bottom: 0.5rem; }
+    .option-name { font-weight: bold; font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .option-price { font-size: 0.85rem; font-weight: bold; background: var(--accent-primary); color: #fff; padding: 2px 8px; border-radius: 10px; }
+    
+    .summary-sidebar {
+      width: 350px; position: sticky; top: 100px; height: max-content;
+    }
+    .summary-card {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      margin-bottom: 1rem;
+    }
+    .summary-title {
+      background: linear-gradient(135deg, #1e3a2a, #2e7d52);
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 600;
+      padding: 1.25rem 1.5rem;
+      margin: 0;
+      border: none;
+      letter-spacing: 0.5px;
+    }
+    .summary-body-inner { padding: 1.5rem; }
+    .summary-section {
+      margin-bottom: 1.1rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid #f0ede6;
+    }
+    .summary-section:last-of-type { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .summary-label {
+      font-size: 0.62rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #aaa;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    .summary-value { font-size: 1rem; font-weight: 500; display: flex; justify-content: space-between; color: #222; }
+    .summary-item-price { font-weight: 600; color: #2e7d52; }
+    .summary-item-list { list-style: none; padding: 0; }
+    .summary-item-list li { display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 0.3rem; color: #555; }
+    
+    .base-ingredients-note {
+      font-size: 0.78rem; color: #aaa; font-style: italic;
+      margin: 0; padding: 1rem 1.5rem;
+      background: #f7f9f8; border-top: 1px solid #e8ece9;
+    }
+    .base-ingredients-note span { font-weight: 600; color: #666; font-style: normal; }
+    
+    .summary-total {
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 1rem; font-weight: 600;
+      padding: 1.25rem 1.5rem;
+      border-top: 2px solid #1e3a2a;
+      background: #fff;
+    }
+    .total-label {
+      font-size: 0.62rem; letter-spacing: 2px; text-transform: uppercase; color: #888;
+    }
+    .total-price { color: #1e3a2a; font-size: 1.6rem; font-weight: 700; }
+    
+    .btn-commander {
+      width: 100%; padding: 1rem; font-size: 1rem; font-weight: 600;
+      background: #2e7d52; color: #fff; border: none; border-radius: 6px;
+      cursor: pointer; transition: 0.3s; letter-spacing: 0.5px;
+    }
+    .btn-commander:disabled { background: #ccc; cursor: not-allowed; }
+    .btn-commander:not(:disabled):hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(46,125,82,0.3); }
+    
+    /* Mobile summary bar */
+    .mobile-summary-bar {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      background: #1e3a2a; box-shadow: 0 -5px 15px rgba(0,0,0,0.2); padding: 1rem 1.25rem;
+      justify-content: space-between; align-items: center; z-index: 100;
+    }
+    .total-price-mobile { color: #fff; }
+    .btn-commander-mobile {
+      background: #2e7d52; color: #fff; border: none; padding: 0.8rem 1.5rem;
+      border-radius: 6px; font-weight: 600; cursor: pointer; letter-spacing: 0.5px;
+    }
+    @media (max-width: 960px) {
+      .builder-container { flex-direction: column; gap: 0; margin-top: 80px; }
+      .builder-main { margin-bottom: 0; }
+      .step-section { margin-bottom: 0.75rem; padding: 1.25rem; border-radius: 8px; }
+      .step-section:last-of-type { margin-bottom: 0; }
+      .summary-sidebar { width: 100%; position: static; margin-top: 0.75rem; }
+      .summary-card { margin-bottom: 0.5rem; }
+      .mobile-summary-bar { display: flex; }
+      body { padding-bottom: 80px; }
+      .summary-sidebar .btn-commander { display: none; }
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- Header Navigation -->
+  <header class="navbar">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center;">
+      <a href="../index.html" class="brand-logo">
+        <span class="text-accent">F'leure</span> Pizza
+      </a>
+      <div class="mobile-toggle">
+        <span></span><span></span><span></span>
+      </div>
+      <nav class="nav-links">
+        <a href="../index.html" class="nav-link">Accueil</a>
+        <a href="menu.html" class="nav-link">Menu Complet</a>
+        <a href="pizza.html" class="nav-link">Nos Pizzas</a>
+        <a href="tacos.html" class="nav-link active">Crée ton Tacos</a>
+        <a href="contact.html" class="nav-link">Contact & Infos</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="builder-container">
+    <div class="builder-main">
+      <div class="builder-header">
+        <h1>Crée ton <span>Tacos</span></h1>
+        <p>100% Personnalisable • 100% Gourmand</p>
+      </div>
+
+      <!-- STEP 1: SIZE -->
+      <div class="step-section active-step" id="step-1">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <h2 class="step-title">Choisis ta taille</h2>
+        </div>
+        <div class="options-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+          <div class="option-card size-option" data-id="L" data-price="8">
+            <span class="option-icon" style="font-size:3rem;">🌮</span>
+            <h3 class="option-name">Taille L</h3>
+            <span class="option-price" style="background:var(--color-primary);">8€</span>
+          </div>
+          <div class="option-card size-option" data-id="XL" data-price="10">
+            <span class="option-icon" style="font-size:3.5rem;">🌯</span>
+            <h3 class="option-name">Taille XL</h3>
+            <span class="option-price" style="background:var(--color-primary);">10€</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 2: MEAT -->
+      <div class="step-section" id="step-2">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <h2 class="step-title">Choisis ta viande</h2>
+        </div>
+        <div class="options-grid">
+          <div class="option-card meat-option" data-id="Poulet">
+            <img src="../assets/images/ingredient_poulet_1774347135836.png" class="option-img" alt="Poulet">
+            <h3 class="option-name">Poulet</h3>
+          </div>
+          <div class="option-card meat-option" data-id="Kebab">
+            <img src="../assets/images/ingredient_tenders_1774347150509.png" class="option-img" alt="Kebab">
+            <h3 class="option-name">Kebab</h3>
+          </div>
+          <div class="option-card meat-option" data-id="Viande Hachée">
+            <img src="../assets/images/ingredient_viande_1774347227723.png" class="option-img" alt="Viande Hachée">
+            <h3 class="option-name">Viande Hachée</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- STEP 3: EXTRAS -->
+      <div class="step-section" id="step-3">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <h2 class="step-title">Ajoute des extras</h2>
+        </div>
+        <div class="options-grid">
+          <div class="option-card extra-option" data-id="Poulet" data-price="1">
+            <img src="../assets/images/ingredient_poulet_1774347135836.png" class="option-img" alt="Poulet">
+            <h3 class="option-name">Poulet</h3>
+            <span class="option-price">+1€</span>
+          </div>
+          <div class="option-card extra-option" data-id="Tenders" data-price="1">
+            <img src="../assets/images/ingredient_tenders_1774347150509.png" class="option-img" alt="Tenders">
+            <h3 class="option-name">Tenders</h3>
+            <span class="option-price">+1€</span>
+          </div>
+          <div class="option-card extra-option" data-id="Merguez" data-price="1">
+            <img src="../assets/images/ingredient_merguez_1774347164409.png" class="option-img" alt="Merguez">
+            <h3 class="option-name">Merguez</h3>
+            <span class="option-price">+1€</span>
+          </div>
+          <div class="option-card extra-option" data-id="Lardons" data-price="1">
+            <img src="../assets/images/ingredient_lardon_1774347193457.png" class="option-img" alt="Lardons">
+            <h3 class="option-name">Lardons</h3>
+            <span class="option-price">+1€</span>
+          </div>
+          <div class="option-card extra-option" data-id="Oeuf" data-price="1">
+            <img src="../assets/images/ingredient_oeuf_1774347210846.png" class="option-img" alt="Oeuf">
+            <h3 class="option-name">Oeuf</h3>
+            <span class="option-price">+1€</span>
+          </div>
+          <div class="option-card extra-option" data-id="Viande Hachée" data-price="1">
+            <img src="../assets/images/ingredient_viande_1774347227723.png" class="option-img" alt="Viande Hachée">
+            <h3 class="option-name">Viande Hachée</h3>
+            <span class="option-price">+1€</span>
+          </div>
+          <div class="option-card extra-option" data-id="Champignon" data-price="1">
+            <img src="../assets/images/ingredient_champignon_1774347257355.png" class="option-img" alt="Champignon">
+            <h3 class="option-name">Champignon</h3>
+            <span class="option-price">+1€</span>
+          </div>
+          <div class="option-card extra-option" data-id="Jambon" data-price="1">
+            <img src="../assets/images/ingredient_jambon_1774347272570.png" class="option-img" alt="Jambon">
+            <h3 class="option-name">Jambon</h3>
+            <span class="option-price">+1€</span>
+          </div>
+          <div class="option-card extra-option" data-id="Chèvre" data-price="1">
+            <img src="../assets/images/ingredient_chevre_1774347290804.png" class="option-img" alt="Chèvre">
+            <h3 class="option-name">Chèvre</h3>
+            <span class="option-price">+1€</span>
+          </div>
+          <div class="option-card extra-option" data-id="Pepperoni" data-price="1">
+            <img src="../assets/images/ingredient_pepperoni_1774347319294.png" class="option-img" alt="Pepperoni">
+            <h3 class="option-name">Pepperoni</h3>
+            <span class="option-price">+1€</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUMMARY SIDEBAR -->
+    <div class="summary-sidebar">
+      <div class="summary-card">
+        <h2 class="summary-title">Ton Tacos</h2>
+        
+        <div class="summary-body-inner">
+          <div class="summary-section">
+            <div class="summary-label">Taille</div>
+            <div class="summary-value" id="summary-size">
+              <span class="placeholder" style="color:#aaa; font-weight:normal;">Sélectionner...</span>
+            </div>
+          </div>
+
+          <div class="summary-section">
+            <div class="summary-label">Viande</div>
+            <div class="summary-value" id="summary-meat">
+              <span class="placeholder" style="color:#aaa; font-weight:normal;">Sélectionner...</span>
+            </div>
+          </div>
+
+          <div class="summary-section">
+            <div class="summary-label">Extras (+1€ unitaire)</div>
+            <ul class="summary-item-list" id="summary-extras">
+              <li class="placeholder" style="color:#aaa; font-weight:normal; font-size:0.9rem;">Aucun extra</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="base-ingredients-note">
+          Inclus de base : <span>Frites</span>, <span>Sauce fromagère</span>, <span>Mozzarella</span>
+        </div>
+
+        <div class="summary-total">
+          <div class="total-label">Total à payer</div>
+          <div class="total-price"><span id="total-price">0</span>€</div>
+        </div>
+
+      </div>
+      
+      <button class="btn-commander" id="btn-commander" disabled>Commander <br><span style="font-size: 0.85rem; text-transform:none; opacity:0.7;">(Sélectionner taille & viande)</span></button>
+    </div>
+  </div>
+
+  <div class="mobile-summary-bar">
+    <div>
+      <span style="color:rgba(255,255,255,0.6); font-size: 0.65rem; text-transform:uppercase; letter-spacing:1.5px;">Total</span>
+      <h3 class="total-price-mobile"><span id="mobile-total-price">0</span>€</h3>
+    </div>
+    <button class="btn-commander-mobile" id="mobile-btn-commander" disabled>Commander</button>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script>
+    const state = { size: null, sizePrice: 0, meat: null, extras: [] };
+
+    const sizeOptions = document.querySelectorAll('.size-option');
+    const meatOptions = document.querySelectorAll('.meat-option');
+    const extraOptions = document.querySelectorAll('.extra-option');
+    
+    const elSummarySize = document.getElementById('summary-size');
+    const elSummaryMeat = document.getElementById('summary-meat');
+    const elSummaryExtras = document.getElementById('summary-extras');
+    const elTotalPrice = document.getElementById('total-price');
+    const elMobileTotalPrice = document.getElementById('mobile-total-price');
+    const btnCommander = document.getElementById('btn-commander');
+    const btnCommanderMobile = document.getElementById('mobile-btn-commander');
+
+    function calculateTotal() {
+      let total = state.sizePrice;
+      state.extras.forEach(ext => total += ext.price);
+      return total;
+    }
+
+    function updateUI() {
+      if (state.size) {
+        elSummarySize.innerHTML = `<span>Taille ${state.size}</span> <span class="summary-item-price">${state.sizePrice}€</span>`;
+      } else { elSummarySize.innerHTML = `<span class="placeholder" style="color:#aaa; font-weight:normal;">Sélectionner...</span>`; }
+
+      if (state.meat) { elSummaryMeat.innerHTML = `<span>${state.meat}</span> <span class="summary-item-price">0€</span>`; } 
+      else { elSummaryMeat.innerHTML = `<span class="placeholder" style="color:#aaa; font-weight:normal;">Sélectionner...</span>`; }
+
+      elSummaryExtras.innerHTML = '';
+      if (state.extras.length > 0) {
+        state.extras.forEach(ext => {
+          const li = document.createElement('li');
+          li.innerHTML = `<span>+ ${ext.id}</span> <span class="summary-item-price">${ext.price}€</span>`;
+          elSummaryExtras.appendChild(li);
+        });
+      } else {
+        elSummaryExtras.innerHTML = `<li class="placeholder" style="color:#aaa; font-weight:normal; font-size:0.9rem;">Aucun extra</li>`;
+      }
+
+      const total = calculateTotal();
+      elTotalPrice.textContent = total;
+      elMobileTotalPrice.textContent = total;
+
+      if (state.size && state.meat) {
+        btnCommander.disabled = false;
+        btnCommander.innerHTML = `Commander Maintenant`;
+        btnCommanderMobile.disabled = false;
+        btnCommanderMobile.innerHTML = `Commander`;
+      } else {
+        btnCommander.disabled = true;
+        btnCommander.innerHTML = `Commander <br><span style="font-size: 0.85rem; text-transform:none; opacity:0.7;">(Sélectionner taille & viande)</span>`;
+        btnCommanderMobile.disabled = true;
+        btnCommanderMobile.innerHTML = `Sélectionnez vos options`;
+      }
+    }
+
+    sizeOptions.forEach(opt => {
+      opt.addEventListener('click', () => {
+        sizeOptions.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        state.size = opt.getAttribute('data-id');
+        state.sizePrice = parseInt(opt.getAttribute('data-price'));
+        updateUI();
+        if (!state.meat) document.getElementById('step-2').scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    });
+
+    meatOptions.forEach(opt => {
+      opt.addEventListener('click', () => {
+        meatOptions.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        state.meat = opt.getAttribute('data-id');
+        updateUI();
+        document.getElementById('step-3').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+
+    extraOptions.forEach(opt => {
+      opt.addEventListener('click', () => {
+        const id = opt.getAttribute('data-id');
+        const price = parseInt(opt.getAttribute('data-price'));
+        if (opt.classList.contains('selected')) {
+          opt.classList.remove('selected');
+          state.extras = state.extras.filter(e => e.id !== id);
+        } else {
+          opt.classList.add('selected');
+          state.extras.push({ id, price });
+        }
+        updateUI();
+      });
+    });
+
+    // Save logic and redirect
+    const handleOrder = () => {
+      if(state.size && state.meat) {
+        const order = {
+          size: state.size,
+          meat: state.meat,
+          extras: state.extras.map(e => e.id),
+          total: calculateTotal()
+        };
+        localStorage.setItem('tacos_order', JSON.stringify(order));
+        window.location.href = 'recap.html';
+      }
+    };
+
+    btnCommander.addEventListener('click', handleOrder);
+    btnCommanderMobile.addEventListener('click', handleOrder);
+  </script>
+</body>
+</html>
+
