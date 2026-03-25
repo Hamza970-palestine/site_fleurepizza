@@ -185,7 +185,7 @@ a {
   position: relative;
   padding-top: 80px;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(248,250,252,0.92) 0%, rgba(255,255,255,0.7) 100%), url('../assets/images/hero-bg.png') no-repeat center center/cover;
+  background: linear-gradient(135deg, rgba(248,250,252,0.92) 0%, rgba(255,255,255,0.7) 100%), url('../assets/images/imgsite/hero-bg.png') no-repeat center center/cover;
 }
 
 .hero::before {
